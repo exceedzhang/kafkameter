@@ -28,9 +28,10 @@ import org.apache.jmeter.config.Arguments;
 import org.apache.jmeter.protocol.java.sampler.AbstractJavaSamplerClient;
 import org.apache.jmeter.protocol.java.sampler.JavaSamplerContext;
 import org.apache.jmeter.samplers.SampleResult;
-import org.apache.jorphan.logging.LoggingManager;
 import org.apache.kafka.clients.producer.ProducerRecord;
-import org.apache.log.Logger;
+
+import org.slf4j.Logger;  
+import org.slf4j.LoggerFactory; 
 
 /**
  * A {@link org.apache.jmeter.samplers.Sampler Sampler} which produces Kafka messages.
@@ -44,7 +45,7 @@ import org.apache.log.Logger;
  */
 public class KafkaProducerSampler extends AbstractJavaSamplerClient {
 
-  private static final Logger log = LoggingManager.getLoggerForClass();
+  private static final Logger log = LoggerFactory.getLogger(KafkaProducerSampler.class);
 
   /**
    * Parameter for setting the Kafka brokers; for example, "kafka01:9092,kafka02:9092".
@@ -188,6 +189,7 @@ public class KafkaProducerSampler extends AbstractJavaSamplerClient {
       producer.send(producerRecord);
       sampleResultSuccess(result, null);
     } catch (Exception e) {
+      log.error(e.getMessage(), e);
       sampleResultFailed(result, "500", e);
     }
     return result;

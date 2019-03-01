@@ -29,8 +29,8 @@ import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
 import com.google.gson.reflect.TypeToken;
 
-import org.apache.jorphan.logging.LoggingManager;
-import org.apache.log.Logger;
+import org.slf4j.Logger;  
+import org.slf4j.LoggerFactory; 
 
 import co.signal.loadgen.SyntheticLoadGenerator;
 
@@ -45,7 +45,7 @@ import co.signal.loadgen.SyntheticLoadGenerator;
  */
 public class TagserveLoadGenerator implements SyntheticLoadGenerator {
 
-  private static final Logger log = LoggingManager.getLoggerForClass();
+  private static final Logger log = LoggerFactory.getLogger(TagserveLoadGenerator.class);
 
   private static final Type SITE_CONFIGS_TYPE = new TypeToken<Map<String, SiteConfig>>() {}.getType();
 
@@ -132,7 +132,7 @@ public class TagserveLoadGenerator implements SyntheticLoadGenerator {
     try {
       return gson.fromJson(config, SITE_CONFIGS_TYPE);
     } catch (JsonParseException e) {
-      log.fatalError("Problem parsing json from config:\n" + config, e);
+      log.error("Problem parsing json from config:\n" + config, e);
       throw Throwables.propagate(e);
     }
   }

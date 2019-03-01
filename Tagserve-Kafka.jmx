@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="2.3">
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.0 r1840935">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
       <stringProp name="TestPlan.comments"></stringProp>
@@ -37,7 +37,7 @@
         <hashTree/>
         <co.signal.loadgen.LoadGenerator guiclass="TestBeanGUI" testclass="co.signal.loadgen.LoadGenerator" testname="Tagserve Load Generator" enabled="true">
           <stringProp name="className">co.signal.loadgen.example.TagserveLoadGenerator</stringProp>
-          <stringProp name="fileName">config1.json</stringProp>
+          <stringProp name="fileName">/Users/zhangwenbin/Downloads/kafkameter/config1.json</stringProp>
           <stringProp name="variableName">message</stringProp>
         </co.signal.loadgen.LoadGenerator>
         <hashTree/>
@@ -46,12 +46,12 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="kafka_brokers" elementType="Argument">
                 <stringProp name="Argument.name">kafka_brokers</stringProp>
-                <stringProp name="Argument.value">kafka01we2:9092,kafka02we2:9092</stringProp>
+                <stringProp name="Argument.value">localhost:9092</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
               <elementProp name="kafka_topic" elementType="Argument">
                 <stringProp name="Argument.name">kafka_topic</stringProp>
-                <stringProp name="Argument.value">test1</stringProp>
+                <stringProp name="Argument.value">test</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
               <elementProp name="kafka_key" elementType="Argument">
@@ -72,6 +72,41 @@
               <elementProp name="kafka_key_serializer" elementType="Argument">
                 <stringProp name="Argument.name">kafka_key_serializer</stringProp>
                 <stringProp name="Argument.value">kafka.serializer.NullEncoder</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="kafka_ssl_keystore" elementType="Argument">
+                <stringProp name="Argument.name">kafka_ssl_keystore</stringProp>
+                <stringProp name="Argument.value">${PARAMETER_KAFKA_SSL_KEYSTORE}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="kafka_ssl_keystore_password" elementType="Argument">
+                <stringProp name="Argument.name">kafka_ssl_keystore_password</stringProp>
+                <stringProp name="Argument.value">${PARAMETER_KAFKA_SSL_KEYSTORE_PASSWORD}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="kafka_ssl_truststore" elementType="Argument">
+                <stringProp name="Argument.name">kafka_ssl_truststore</stringProp>
+                <stringProp name="Argument.value">${PARAMETER_KAFKA_SSL_TRUSTSTORE}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="kafka_ssl_truststore_password" elementType="Argument">
+                <stringProp name="Argument.name">kafka_ssl_truststore_password</stringProp>
+                <stringProp name="Argument.value">${PARAMETER_KAFKA_SSL_TRUSTSTORE_PASSWORD}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="kafka_use_ssl" elementType="Argument">
+                <stringProp name="Argument.name">kafka_use_ssl</stringProp>
+                <stringProp name="Argument.value">${PARAMETER_KAFKA_USE_SSL}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="kafka_compression_type" elementType="Argument">
+                <stringProp name="Argument.name">kafka_compression_type</stringProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="kafka_partition" elementType="Argument">
+                <stringProp name="Argument.name">kafka_partition</stringProp>
+                <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
@@ -109,6 +144,7 @@
             </value>
           </objProp>
           <stringProp name="fileName"></stringProp>
+          <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
         <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
@@ -141,6 +177,7 @@
             </value>
           </objProp>
           <stringProp name="fileName"></stringProp>
+          <stringProp name="filename"></stringProp>
         </ResultCollector>
         <hashTree/>
       </hashTree>

@@ -31,8 +31,9 @@ import org.apache.jmeter.engine.event.LoopIterationListener;
 import org.apache.jmeter.testbeans.TestBean;
 import org.apache.jmeter.threads.JMeterContextService;
 import org.apache.jmeter.threads.JMeterVariables;
-import org.apache.jorphan.logging.LoggingManager;
-import org.apache.log.Logger;
+
+import org.slf4j.Logger;  
+import org.slf4j.LoggerFactory; 
 
 /**
  * Config Element which reads a Synthetic Load Description from a file, generates
@@ -43,7 +44,9 @@ import org.apache.log.Logger;
  */
 public class LoadGenerator extends ConfigTestElement implements TestBean, LoopIterationListener {
 
-  private static final Logger log = LoggingManager.getLoggerForClass();
+  private static final long serialVersionUID = 8671720686098910732L;
+
+  private static final Logger log = LoggerFactory.getLogger(LoadGenerator.class);
 
   private String fileName;
   private String variableName;
@@ -66,7 +69,7 @@ public class LoadGenerator extends ConfigTestElement implements TestBean, LoopIt
           className, false, Thread.currentThread().getContextClassLoader()
       ).getConstructor(String.class).newInstance(config);
     } catch (Exception e) {
-      log.fatalError("Exception initializing Load Generator class: " + className, e);
+      log.error("Exception initializing Load Generator class: " + className, e);
       throw Throwables.propagate(e);
     }
   }
