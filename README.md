@@ -1,5 +1,9 @@
 # kafkameter - Kafka JMeter Extension
 
+//将Kafka类库升级到2.1.1版本
+//将JMeter类库升级到5.1版本
+//添加Log4j日志类库支持 LoggingManager	Deprecated since 3.2, use SLF4J for logger creation
+
 This extension provides two components:
 
 * Kafka Producer Sampler: sends keyed messages to Kafka
